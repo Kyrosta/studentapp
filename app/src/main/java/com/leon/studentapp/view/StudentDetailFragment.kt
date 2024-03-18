@@ -29,13 +29,13 @@ class StudentDetailFragment : Fragment() {
         detailViewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         detailViewModel.fetch()
 
-        detailViewModel.studentLD.observe(viewLifecycleOwner, { student ->
+        detailViewModel.studentLD.observe(viewLifecycleOwner) { student ->
             binding.apply {
                 txtID.setText(student.id)
                 txtName.setText(student.name)
                 txtBoD.setText(student.dob)
                 txtPhone.setText(student.phone)
             }
-        })
+        }
     }
 }

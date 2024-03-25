@@ -9,31 +9,30 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.leon.studentapp.R
-import com.leon.studentapp.databinding.FragmentStudentListBinding
-import com.leon.studentapp.viewmodel.ListViewModel
+import com.leon.studentapp.databinding.FragmentCarListBinding
+import com.leon.studentapp.viewmodel.CarViewModel
 
 
-class StudentListFragment : Fragment() {
-    private lateinit var viewModel: ListViewModel
-    private lateinit var binding:FragmentStudentListBinding
-    private val studentListAdapter = StudentListAdapter(arrayListOf())
+class CarListFragment : Fragment() {
+    private lateinit var viewModel:CarViewModel
+    private lateinit var binding:FragmentCarListBinding
+    private val carListAdapter = CarListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStudentListBinding.inflate(inflater,container,false)
+        binding = FragmentCarListBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ListViewModel:: class.java)
+        viewModel = ViewModelProvider(this).get(CarViewModel:: class.java)
         viewModel.refresh()
 
         binding.recView.layoutManager = LinearLayoutManager(context)
-        binding.recView.adapter = studentListAdapter
+        binding.recView.adapter = carListAdapter
 
         observeViewModel()
 
@@ -48,8 +47,8 @@ class StudentListFragment : Fragment() {
     }
 
     fun observeViewModel(){
-        viewModel.studentsLD.observe(viewLifecycleOwner, Observer {
-            studentListAdapter.updateStudentList(it)
+        viewModel.carsLD.observe(viewLifecycleOwner, Observer {
+            carListAdapter.updateCarList(it)
         })
 
         viewModel.loadingLD.observe(viewLifecycleOwner, Observer{
@@ -62,7 +61,7 @@ class StudentListFragment : Fragment() {
             }
         })
 
-        viewModel.studentLoadErrorLD.observe(viewLifecycleOwner, Observer{
+        viewModel.carLoadErrorLD.observe(viewLifecycleOwner, Observer{
             if (it == true){
                 binding.txtError.visibility = View.VISIBLE
             } else {

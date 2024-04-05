@@ -18,6 +18,7 @@ data class Car(
     val name:String?,
     val year:String?,
     val features:List<String>?,
+    val imageUrl:String?,
     val specs:CarSpecifications?,
 )
 

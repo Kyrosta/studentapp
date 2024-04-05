@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.leon.studentapp.databinding.CarListItemBinding
 import com.leon.studentapp.model.Car
+import com.bumptech.glide.Glide
 
 class CarListAdapter(val carList:ArrayList<Car>)
     :RecyclerView.Adapter<CarListAdapter.CarViewHolder>() {
@@ -27,9 +28,14 @@ class CarListAdapter(val carList:ArrayList<Car>)
     }
 
     override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
-        holder.binding.txtID.text = carList[position].id
-        holder.binding.txtName.text = carList[position].name
-        holder.binding.txtYear.text = carList[position].year
+        val currentCar = carList[position]
+        holder.binding.txtID.text = currentCar.id
+        holder.binding.txtName.text = currentCar.name
+        holder.binding.txtYear.text = currentCar.year
+
+        Glide.with(holder.itemView.context)
+            .load(currentCar.imageUrl)
+            .into(holder.binding.imgStudent)
 
         //holder.binding.btnDetail.setOnClickListener {
             //Karena tidak disuruh detail

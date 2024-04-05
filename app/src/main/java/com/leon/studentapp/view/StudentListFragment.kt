@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.leon.studentapp.R
 import com.leon.studentapp.databinding.FragmentStudentListBinding
 import com.leon.studentapp.viewmodel.ListViewModel
+import com.leon.studentapp.view.StudentListFragmentDirections
+
 
 
 class StudentListFragment : Fragment() {

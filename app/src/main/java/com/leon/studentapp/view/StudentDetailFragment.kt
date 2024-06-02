@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.leon.studentapp.R
 import com.leon.studentapp.databinding.FragmentStudentDetailBinding
+import com.leon.studentapp.model.Student
 import com.leon.studentapp.viewmodel.DetailViewModel
 import com.squareup.picasso.Picasso
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -51,7 +52,6 @@ class StudentDetailFragment : Fragment() {
                             "New Notifications Created!", R.drawable.baseline_person_24)
                     }
             }
-
             if(it != null){
                 binding.txtID.setText(student.id)
                 binding.txtName.setText(student.name)

@@ -9,6 +9,12 @@
         <variable
             name="listener"
             type="com.leon.studentapp.view.ButtonDetailClickListener" />
+        <variable
+            name="listenerUpdate"
+            type="com.leon.studentapp.view.ButtonUpdateClickListener" />
+        <variable
+            name="listenerNotif"
+            type="com.leon.studentapp.view.ButtonNotifClickListener" />
     </data>
 
     <FrameLayout
@@ -100,7 +106,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Update"
-                android:onClick="@{listener::onButtonUpdateClick}"
+                android:onClick="@{listenerUpdate::onButtonUpdateClick}"
                 android:tag="@{student.id}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtPhone" />
@@ -113,7 +119,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Create Notification"
-                android:onClick="@{listener::onNotificationButtonClick}"
+                android:onClick="@{listenerNotif::onNotificationButtonClick}"
                 android:tag="@{student.id}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtPhone" />

@@ -29,11 +29,8 @@ class StudentListAdapter(val studentList:ArrayList<Student>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
-//        val view = StudentListItemBinding.inflate(
-//            LayoutInflater.from(parent.context), parent, false)
-//        return StudentViewHolder(view)
-        val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<StudentListItemBinding>(inflater, R.layout.student_list_item, parent, false)
+        val view = StudentListItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false)
         return StudentViewHolder(view)
     }
 
@@ -44,6 +41,7 @@ class StudentListAdapter(val studentList:ArrayList<Student>)
     override fun onBindViewHolder(holder: StudentViewHolder, position: Int) {
         holder.view.student = studentList[position]
         holder.view.listener = this
+
 //        val currStudent = studentList[position]
 //        holder.binding.txtID.text = currStudent.id
 //        holder.binding.txtName.text = currStudent.name
@@ -76,34 +74,7 @@ class StudentListAdapter(val studentList:ArrayList<Student>)
     override fun onButtonDetailClick(v: View) {
         val action = StudentListFragmentDirections.actionStudentDetail(v.tag.toString())
         Navigation.findNavController(v).navigate(action)
+        Log.d("Messages", "Detail")
     }
-
-    override fun onButtonUpdateClick(v: View) {
-        TODO("Not yet implemented")
-    }
-
-//    override fun onNotificationButtonClick(v: View) {
-//        val student = studentList.find { it.id == v.tag.toString() }
-//        student?.let {
-//            Observable.timer(5, TimeUnit.SECONDS)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe {
-//                    MainActivity.showNotification(
-//                        student.name.toString(),
-//                        "Notification Created!",
-//                        R.drawable.baseline_person_24
-//                    )
-//                }
-//        }
-//    }
-    override fun onNotificationButtonClick(v: View) {
-        val student = studentList.find { it.id == v.tag.toString() }
-        student?.let { student ->
-            val message = "Notification for ${student.name} created."
-            Toast.makeText(v.context, message, Toast.LENGTH_SHORT).show()
-        }
-    }
-
 }
 
